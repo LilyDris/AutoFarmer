@@ -5,24 +5,37 @@ from lxml.html import fromstring
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import numpy as np
-import smtplib,ssl
 import time
 import shelve
 import ctypes
 import sys
 import threading
 import random
+import webbrowser
 from time import sleep
 
 
 def main():
-    port = 465  # For SSL
 
-    # Create a secure SSL context
-    context = ssl.create_default_context()
+    # url = "https://us.howrse.com/elevage/chevaux/?elevage=all-horses"
+    # chrome_path = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
+    # driver = webdriver.Chrome('./chromedriver')
+    # driver.get(url)
+    # driver.close()
+    driver = webdriver.Chrome('./chromedriver')
+    driver.get("https://us.howrse.com")
+    print(driver.title)
+    login = driver.find_element(by=By.NAME, value='login')
+    login.clear()
+    login.send_keys("Blubbery")
+    driver.find_element(by=By.CLASS_NAME,value='btn--secondary btn form__submit button button-style-submit').click()
+    password = driver.find_element(by=By.CLASS_NAME, value='password')
+    password.clear()
+    password.send_keys("smilelily24")
+    password.send_keys(Keys.RETURN)
+    print(driver.current_url)
+    driver.close()
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-        server.login("usernamehere0700@gmail.com", "Smilelily#24")
-        server.sendmail("usernamehere0700@gmail.com", "lilydriscoll24@gmail.com", "hi")
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
