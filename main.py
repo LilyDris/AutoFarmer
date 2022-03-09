@@ -17,7 +17,7 @@ from time import sleep
 
 def main():
 
-    wait=np.random.uniform(low=1.0,high=5.0,size=20)
+    wait=np.random.uniform(low=1.0,high=5.0,size=50)
     driver = webdriver.Chrome('./chromedriver')
     driver.get("https://us.howrse.com")
     print(driver.title)
@@ -34,6 +34,11 @@ def main():
     password.send_keys(Keys.RETURN)
     sleep(5)
     driver.get('https://us.howrse.com/elevage/chevaux/?elevage=all-horses')
+    sleep(np.random.choice(wait))
+    driver.find_element(by=By.XPATH,value='/html/body/div[7]/main/section/section/div[1]/div[2]/div[2]/div/div[2]/ul/li[1]/div/div[1]/div/ul/li/a').click()
+    sleep(np.random.choice(wait))
+    driver.find_element(by=By.XPATH,
+                        value='/html/body/div[7]/main/section/section/div[4]/div/div[1]/div[2]/div/div/div[1]/div/div[1]/div[1]/div/div[2]/div[1]/a').click()
     sleep(np.random.choice(wait))
     print(driver.current_url)
     driver.close()
