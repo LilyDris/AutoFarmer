@@ -17,22 +17,24 @@ from time import sleep
 
 def main():
 
-    # url = "https://us.howrse.com/elevage/chevaux/?elevage=all-horses"
-    # chrome_path = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
-    # driver = webdriver.Chrome('./chromedriver')
-    # driver.get(url)
-    # driver.close()
+    wait=np.random.uniform(low=1.0,high=5.0,size=20)
     driver = webdriver.Chrome('./chromedriver')
     driver.get("https://us.howrse.com")
     print(driver.title)
-    login = driver.find_element(by=By.NAME, value='login')
-    login.clear()
+    driver.find_element(by=By.XPATH, value="/html/body/aside/div/article/div/div[2]/div/div/div[2]/form/button").click()
+    sleep(np.random.choice(wait))
+    driver.find_element(by=By.XPATH, value="/html/body/div[7]/header/nav/div/strong").click()
+    sleep(np.random.choice(wait))
+    login = driver.find_element(by=By.ID, value='login')
     login.send_keys("Blubbery")
-    driver.find_element(by=By.CLASS_NAME,value='btn--secondary btn form__submit button button-style-submit').click()
-    password = driver.find_element(by=By.CLASS_NAME, value='password')
-    password.clear()
+    sleep(np.random.choice(wait))
+    password = driver.find_element(by=By.ID, value='password')
     password.send_keys("smilelily24")
+    sleep(np.random.choice(wait))
     password.send_keys(Keys.RETURN)
+    sleep(5)
+    driver.get('https://us.howrse.com/elevage/chevaux/?elevage=all-horses')
+    sleep(np.random.choice(wait))
     print(driver.current_url)
     driver.close()
 
