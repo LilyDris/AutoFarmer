@@ -58,7 +58,7 @@ def main():
     driver.get('https://us.howrse.com/elevage/chevaux/?elevage=all-horses')
     sleep(np.random.choice(wait))
     driver.find_element(by=By.XPATH,
-                        value='/html/body/div[7]/main/section/section/div[1]/div[2]/div[2]/div/div[2]/ul/li[1]/div/div[1]/div/ul/li/a').click()  # CLicks on first horse
+                        value='/html/body/div[7]/main/section/section/div[1]/div[2]/div[2]/div/div[2]/ul/li[1]/div/div[1]/div/ul/li/a').click()  # Change to Xpath of first horse
     sleep(np.random.choice(wait))
     for x in range(3):
         wait = np.random.uniform(low=1.0, high=5.0, size=50)
