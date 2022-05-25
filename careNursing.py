@@ -61,6 +61,9 @@ def main():
         # Nurses
         driver.find_element(by=By.XPATH, value='/html/body/div[8]/main/section/section/div[4]/div/div[1]/div[2]/div/div/div[1]/div/div[1]/div[1]/div/div[1]/div[1]/a').click()
         sleep(np.random.choice(wait))
+        #Strokes
+        driver.find_element(by=By.XPATH, value='/html/body/div[8]/main/section/section/div[4]/div/div[1]/div[2]/div/div/div[1]/div/div[1]/div[1]/div/div[1]/div[3]/a').click()
+        sleep(np.random.choice(wait))
         # Clicks next horse
         driver.find_element(by=By.XPATH, value= '/html/body/div[8]/main/section/section/div[4]/div/div[2]/div[1]/div[2]/a[2]').click()
         sleep(np.random.choice(wait))
